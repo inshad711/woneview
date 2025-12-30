@@ -447,7 +447,6 @@
 
 // export default Navbar2;
 
-
 // "use client";
 // import React, { useState, useEffect, useRef } from 'react';
 // import { motion, AnimatePresence } from 'framer-motion';
@@ -640,7 +639,6 @@
 
 // export default Navbar2;
 
-
 // "use client";
 // import React, { useState, useEffect, useRef } from 'react';
 // import { motion, AnimatePresence } from 'framer-motion';
@@ -801,7 +799,6 @@
 // };
 
 // export default Navbar2;
-
 
 // "use client";
 // import React, { useState, useEffect, useRef } from 'react';
@@ -1096,7 +1093,6 @@
 
 // export default Navbar2;
 
-
 // "use client";
 // import React, { useState, useEffect, useRef } from 'react';
 // import { motion, AnimatePresence } from 'framer-motion';
@@ -1387,147 +1383,306 @@
 //         <div className="">
 //             <Header />
 
-
 //         </div>
 //     );
 // }
 
+// // E:\woneview\app\component\Navbar2.tsx
+// "use client";
+// import React, { useState, useEffect } from "react";
+// import { Menu, X, ChevronRight } from "lucide-react";
 
+// const Header = () => {
+//   const [isScrolled, setIsScrolled] = useState(false);
+//   const [isVisible, setIsVisible] = useState(true);
+//   const [lastScrollY, setLastScrollY] = useState(0);
+//   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+//   // Scroll logic for sticky behavior and hide/show direction
+//   useEffect(() => {
+//     const handleScroll = () => {
+//       const currentScrollY = window.scrollY;
+
+//       // 1. Background styling
+//       setIsScrolled(currentScrollY > 20);
+
+//       // 2. Visibility handling
+//       if (currentScrollY > lastScrollY && currentScrollY > 100) {
+//         // Scrolling Down - Hide Header
+//         if (!isMobileMenuOpen) setIsVisible(false);
+//       } else {
+//         // Scrolling Up - Show Header
+//         setIsVisible(true);
+//       }
+
+//       setLastScrollY(currentScrollY);
+//     };
+
+//     window.addEventListener("scroll", handleScroll, { passive: true });
+//     return () => window.removeEventListener("scroll", handleScroll);
+//   }, [lastScrollY, isMobileMenuOpen]);
+
+//   const navLinks = [
+//     { name: "Features", href: "#features" },
+//     { name: "Benefits", href: "#benefits" },
+//     { name: "Services", href: "#service" },
+//     { name: "Upgrade", href: "#upgrade-1" },
+//     { name: "FAQs", href: "#faq" },
+//   ];
+
+//   return (
+//     <header
+//       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 border-b py-4 ${
+//         isVisible ? "translate-y-0" : "-translate-y-full"
+//       } ${
+//         isScrolled
+//           ? "bg-[#fff] shadow-sm backdrop-blur-md border-white/10"
+//           : "bg-[#fff] shadow-xs border-transparent"
+//       }`}
+//     >
+//       <div className="max-w-7xl mx-auto px-6 md:px-10 flex items-center justify-between">
+//         {/* Logo Section */}
+//         <div className="flex items-center gap-2">
+//           <a
+//             href="/"
+//             className="flex items-center transition-opacity hover:opacity-80"
+//           >
+//             <img
+//               src="/wonview-01.png"
+//               alt="Brand Logo"
+//               className="h-8 w-auto md:h-10"
+//               onError={(e) => {
+//                 // FIXED: Explicitly cast target to HTMLImageElement to solve build error
+//                 (e.target as HTMLImageElement).src =
+//                   "https://via.placeholder.com/150x40?text=LOGO";
+//               }}
+//             />
+//           </a>
+//         </div>
+
+//         {/* Desktop Navigation Links */}
+//         <nav className="hidden md:flex items-center gap-8">
+//           {navLinks.map((link) => (
+//             <a
+//               key={link.name}
+//               href={link.href}
+//               className="text-md font-medium text-black/70 hover:text-[#f15b2b] transition-colors duration-200"
+//             >
+//               {link.name}
+//             </a>
+//           ))}
+//         </nav>
+
+//         {/* Call to Action Button */}
+//         <div className="hidden md:block">
+//           <a
+//             href="https://calendly.com/"
+//             target="_blank"
+//             rel="noopener noreferrer"
+//             className="bg-gradient-to-r from-[#f15b2b] to-[#1e1e1e] text-[#ffffff] px-6 py-2 rounded"
+//           >
+//             Book a Call
+//           </a>
+//         </div>
+
+//         {/* Mobile Menu Toggle */}
+//         <button
+//           className="md:hidden text-black p-2 focus:outline-none"
+//           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+//         >
+//           {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+//         </button>
+//       </div>
+
+//       {/* Mobile Navigation Drawer */}
+//       <div
+//         className={`fixed inset-0 top-[72px] bg-[#000510] z-40 transition-transform duration-300 ease-in-out transform ${
+//           isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
+//         } md:hidden p-6`}
+//       >
+//         <div className="flex flex-col gap-6">
+//           {navLinks.map((link) => (
+//             <a
+//               key={link.name}
+//               href={link.href}
+//               onClick={() => setIsMobileMenuOpen(false)}
+//               className="text-xl font-medium text-white border-b border-white/5 pb-4 flex justify-between items-center"
+//             >
+//               {link.name}
+//               <ChevronRight size={18} className="text-white/30" />
+//             </a>
+//           ))}
+//           <a
+//             href="https://calendly.com/"
+//             className="mt-4 bg-gradient-to-r from-[#f15b2b] to-[#1e1e1e] text-[#ffffff] px-6 py-3 rounded text-center font-medium"
+//           >
+//             Book a Call
+//           </a>
+//         </div>
+//       </div>
+//     </header>
+//   );
+// };
+
+// export default function Navbar2() {
+//   return (
+//     <div className="">
+//       <Header />
+//     </div>
+//   );
+// }
 
 "use client";
-import React, { useState, useEffect } from 'react';
-import { Menu, X, ChevronRight } from 'lucide-react';
+import React, { useState, useEffect } from "react";
+import { Menu, X, ChevronRight } from "lucide-react";
 
 const Header = () => {
-    const [isScrolled, setIsScrolled] = useState(false);
-    const [isVisible, setIsVisible] = useState(true);
-    const [lastScrollY, setLastScrollY] = useState(0);
-    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-    // Scroll logic for sticky behavior and hide/show direction
-    useEffect(() => {
-        const handleScroll = () => {
-            const currentScrollY = window.scrollY;
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      setIsScrolled(currentScrollY > 20);
 
-            // 1. Background styling
-            setIsScrolled(currentScrollY > 20);
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        if (!isMobileMenuOpen) setIsVisible(false);
+      } else {
+        setIsVisible(true);
+      }
+      setLastScrollY(currentScrollY);
+    };
 
-            // 2. Visibility handling
-            if (currentScrollY > lastScrollY && currentScrollY > 100) {
-                // Scrolling Down - Hide Header
-                if (!isMobileMenuOpen) setIsVisible(false);
-            } else {
-                // Scrolling Up - Show Header
-                setIsVisible(true);
-            }
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY, isMobileMenuOpen]);
 
-            setLastScrollY(currentScrollY);
-        };
+  // Prevent background scrolling when menu is open
+  useEffect(() => {
+    document.body.style.overflow = isMobileMenuOpen ? "hidden" : "unset";
+  }, [isMobileMenuOpen]);
 
-        window.addEventListener('scroll', handleScroll, { passive: true });
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, [lastScrollY, isMobileMenuOpen]);
+  const navLinks = [
+    { name: "Features", href: "#features" },
+    { name: "Benefits", href: "#benefits" },
+    { name: "Services", href: "#service" },
+    { name: "Upgrade", href: "#upgrade-1" },
+    { name: "FAQs", href: "#faq" },
+  ];
 
-    const navLinks = [
-        { name: 'Features', href: '#features' },
-        { name: 'Benefits', href: '#benefits' },
-        { name: 'Services', href: '#service' },
-        { name: 'Upgrade', href: '#upgrade-1' },
-        { name: 'FAQs', href: '#faq' },
-    ];
+  const Logo = ({ className }: { className?: string }) => (
+    <img
+      src="/wonview-01.png"
+      alt="Woneview Logo"
+      className={className || "h-8 w-auto md:h-10"}
+      onError={(e) => {
+        (e.target as HTMLImageElement).src =
+          "https://via.placeholder.com/150x40?text=LOGO";
+      }}
+    />
+  );
 
-    return (
-        <header
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 border-b py-4 ${isVisible ? 'translate-y-0' : '-translate-y-full'
-                } ${isScrolled
-                    ? 'bg-[#fff] shadow-sm backdrop-blur-md border-white/10'
-                    : 'bg-[#fff] shadow-xs border-transparent'
-                }`}
+  return (
+    <header
+      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500  ${
+        isVisible ? "translate-y-0" : "-translate-y-full"
+      } ${
+        isScrolled
+          ? "bg-white shadow-md py-4"
+          : "bg-white py-4 border-transparent"
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-6 md:px-10 flex items-center justify-between">
+        {/* Main Logo */}
+        <a
+          href="/"
+          className="flex items-center transition-opacity hover:opacity-80"
         >
-            <div className="max-w-7xl mx-auto px-6 md:px-10 flex items-center justify-between">
+          <Logo />
+        </a>
 
-                {/* Logo Section */}
-                <div className="flex items-center gap-2">
-                    <a href="/" className="flex items-center transition-opacity hover:opacity-80">
-                        <img
-                            src="/wonview-01.png"
-                            alt="Brand Logo"
-                            className="h-8 w-auto md:h-10"
-                            onError={(e) => {
-                                // FIXED: Explicitly cast target to HTMLImageElement to solve build error
-                                (e.target as HTMLImageElement).src = 'https://via.placeholder.com/150x40?text=LOGO';
-                            }}
-                        />
-                    </a>
-                </div>
-
-                {/* Desktop Navigation Links */}
-                <nav className="hidden md:flex items-center gap-8">
-                    {navLinks.map((link) => (
-                        <a
-                            key={link.name}
-                            href={link.href}
-                            className="text-md font-medium text-black/70 hover:text-[#f15b2b] transition-colors duration-200"
-                        >
-                            {link.name}
-                        </a>
-                    ))}
-                </nav>
-
-                {/* Call to Action Button */}
-                <div className="hidden md:block">
-                    <a
-                        href="https://calendly.com/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="bg-gradient-to-r from-[#f15b2b] to-[#1e1e1e] text-[#ffffff] px-6 py-2 rounded"
-                    >
-                        Book a Call
-                    </a>
-                </div>
-
-                {/* Mobile Menu Toggle */}
-                <button
-                    className="md:hidden text-black p-2 focus:outline-none"
-                    onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                >
-                    {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
-                </button>
-            </div>
-
-            {/* Mobile Navigation Drawer */}
-            <div
-                className={`fixed inset-0 top-[72px] bg-[#000510] z-40 transition-transform duration-300 ease-in-out transform ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
-                    } md:hidden p-6`}
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex items-center gap-8">
+          {navLinks.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              className="text-sm font-semibold text-gray-700 hover:text-[#f15b2b] transition-colors"
             >
-                <div className="flex flex-col gap-6">
-                    {navLinks.map((link) => (
-                        <a
-                            key={link.name}
-                            href={link.href}
-                            onClick={() => setIsMobileMenuOpen(false)}
-                            className="text-xl font-medium text-white border-b border-white/5 pb-4 flex justify-between items-center"
-                        >
-                            {link.name}
-                            <ChevronRight size={18} className="text-white/30" />
-                        </a>
-                    ))}
-                    <a
-                        href="https://calendly.com/"
-                        className="mt-4 bg-gradient-to-r from-[#f15b2b] to-[#1e1e1e] text-[#ffffff] px-6 py-3 rounded text-center font-medium"
-                    >
-                        Book a Call
-                    </a>
-                </div>
-            </div>
-        </header>
-    );
+              {link.name}
+            </a>
+          ))}
+        </nav>
+
+        {/* Desktop CTA */}
+        <div className="hidden md:block">
+          <a
+            href="#"
+            className="bg-gradient-to-r from-[#f15b2b] to-[#1e1e1e] text-white px-6 py-2.5 rounded-lg font-medium hover:opacity-90 transition-opacity"
+          >
+            Book a Call
+          </a>
+        </div>
+
+        {/* Mobile Toggle Button */}
+        <button
+          className="md:hidden text-black p-2 z-[110]"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        >
+          {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+        </button>
+      </div>
+
+      {/* --- Mobile Navigation Drawer --- */}
+      <div
+        className={`fixed inset-0 h-screen bg-white z-[105] transition-transform duration-300 ease-in-out transform ${
+          isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
+        } md:hidden flex flex-col`}
+      >
+        {/* 1. Mobile Menu Top Bar (Shows Logo + Close Icon) */}
+        <div className="flex items-center justify-between px-6 py-4 border-b border-gray-50">
+          <Logo className="h-8 w-auto" />
+          <button onClick={() => setIsMobileMenuOpen(false)} className="p-2">
+            <X size={28} />
+          </button>
+        </div>
+
+        {/* 2. Scrollable Content Area */}
+        <div className="flex-1 overflow-y-auto px-8 py-8 flex flex-col">
+          <nav className="flex flex-col space-y-2">
+            {navLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="text-2xl font-normal text-gray-900 py-4 border-b border-gray-50 flex justify-between items-center group active:text-[#f15b2b]"
+              >
+                {link.name}
+                <ChevronRight
+                  size={24}
+                  className="text-gray-300 group-active:text-[#f15b2b]"
+                />
+              </a>
+            ))}
+          </nav>
+
+          {/* 3. Mobile Footer (CTA + Copyright) */}
+          <div className="mt-auto pt-10 pb-6">
+            <a
+              href="#"
+              className="w-full block bg-gradient-to-r from-[#f15b2b] to-[#1e1e1e] text-white px-6 py-4 rounded-xl text-center font-bold text-lg shadow-lg"
+            >
+              Book a Call
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+  );
 };
 
 export default function Navbar2() {
-    return (
-        <div className="">
-            <Header />
-        </div>
-    );
+  return <Header />;
 }

@@ -24,14 +24,6 @@ const ComparisonSection = () => {
   return (
     <section className="py-20 px-0 md:px-6 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto flex flex-col items-center">
-        {/*              
-                <h2 className="text-4xl md:text-5xl font-normal text-[#0D0D0D] text-center mb-2">
-                    Why choose us over others
-                </h2>
-                <p className="text-lg text-gray-500 text-center max-w-2xl mb-10">
-                    Here how Elevar delivers more value, clarity, and results compared to typical service providers.
-                </p> */}
-
         <div className="text-center mb-4">
           <h2 className="text-4xl md:text-4xl font-bold tracking-tight flex flex-wrap justify-center items-center gap-x-4 gap-y-2">
             <span className="text-black"> Why </span>
