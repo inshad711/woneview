@@ -195,11 +195,9 @@
 //                 </div>
 //             </div>
 
-
 //         </div>
 //     );
 // }
-
 
 // // E:\woneview\app\component\AnimatedCard.tsx
 // "use client";
@@ -253,7 +251,7 @@
 //             transition={{ duration: 0.5, delay: index * 0.1 }}
 //             className={`
 //         relative w-full overflow-hidden
-//         ${project.color} rounded-[32px] 
+//         ${project.color} rounded-[32px]
 //         shadow-xl ring-1 ring-black/5 cursor-default
 //       `}
 //         >
@@ -301,7 +299,6 @@
 //                             </p>
 //                         </div>
 
-
 //                     </div>
 //                 </div>
 //             </div>
@@ -340,182 +337,180 @@
 //                     ))}
 //                 </div>
 
-
 //             </div>
 //         </div>
 //     );
 // }
 
-
 "use client";
 
-import React from 'react';
-import { motion } from 'framer-motion';
-import { ExternalLink, ChevronRight } from 'lucide-react';
+import React from "react";
+import { motion } from "framer-motion";
+import { ExternalLink, ChevronRight } from "lucide-react";
 
 // --- TypeScript Definitions ---
 interface Project {
-    id: string;
-    title: string;
-    category: string;
-    client: string;
-    duration: string;
-    tool: string;
-    description: string;
-    image: string;
-    color: string;
+  id: string;
+  title: string;
+  category: string;
+  client: string;
+  duration: string;
+  tool: string;
+  description: string;
+  image: string;
+  color: string;
 }
 
 interface ProjectCardProps {
-    project: Project;
-    index: number;
+  project: Project;
+  index: number;
 }
 
 // Project Data
 const PROJECTS: Project[] = [
-    {
-        id: 'adella-ai',
-        title: 'Adella AI',
-        category: 'Product Design',
-        client: 'Adella Technologies',
-        duration: '4 Weeks',
-        tool: 'Framer',
-        description: 'Adella is a modern productivity platform designed to help teams align goals, automate tasks, and visualize growth in real time. I built a cohesive design system focused on clarity, motion, and emotional connection.',
-        image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1024&h=1024&auto=format&fit=crop',
-        color: 'bg-white'
-    },
-    {
-        id: 'nexus-app',
-        title: 'Nexus Flow',
-        category: 'UX Research',
-        client: 'Nexus Global',
-        duration: '6 Weeks',
-        tool: 'Figma',
-        description: 'A deep dive into user behavior for distributed teams. We redesigned the core navigation to reduce cognitive load by 40% and improved the task completion rate through iterative prototyping.',
-        image: 'https://images.unsplash.com/photo-1635776062127-d379bfcba9f8?q=80&w=1024&h=1024&auto=format&fit=crop',
-        color: 'bg-white'
-    },
-    {
-        id: 'luna-brand',
-        title: 'Luna Studio',
-        category: 'Branding',
-        client: 'Luna Creative',
-        duration: '3 Weeks',
-        tool: 'Adobe CC',
-        description: 'Developing a visual identity for a high-end photography studio. The brand focuses on minimalism and light, utilizing negative space to let the portfolio speak for itself.',
-        image: 'https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=1024&h=1024&auto=format&fit=crop',
-        color: 'bg-white'
-    }
+  {
+    id: "adella-ai",
+    title: "Adella AI",
+    category: "Product Design",
+    client: "Adella Technologies",
+    duration: "4 Weeks",
+    tool: "Framer",
+    description:
+      "Adella is a modern productivity platform designed to help teams align goals, automate tasks, and visualize growth in real time. I built a cohesive design system focused on clarity, motion, and emotional connection.",
+    image:
+      "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1024&h=1024&auto=format&fit=crop",
+    color: "bg-white",
+  },
+  {
+    id: "nexus-app",
+    title: "Nexus Flow",
+    category: "UX Research",
+    client: "Nexus Global",
+    duration: "6 Weeks",
+    tool: "Figma",
+    description:
+      "A deep dive into user behavior for distributed teams. We redesigned the core navigation to reduce cognitive load by 40% and improved the task completion rate through iterative prototyping.",
+    image:
+      "https://images.unsplash.com/photo-1635776062127-d379bfcba9f8?q=80&w=1024&h=1024&auto=format&fit=crop",
+    color: "bg-white",
+  },
+  {
+    id: "luna-brand",
+    title: "Luna Studio",
+    category: "Branding",
+    client: "Luna Creative",
+    duration: "3 Weeks",
+    tool: "Adobe CC",
+    description:
+      "Developing a visual identity for a high-end photography studio. The brand focuses on minimalism and light, utilizing negative space to let the portfolio speak for itself.",
+    image:
+      "https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=1024&h=1024&auto=format&fit=crop",
+    color: "bg-white",
+  },
 ];
 
 const ProjectCard = ({ project, index }: ProjectCardProps) => {
-    return (
-        <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-            className={`
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      className={`
         relative w-full overflow-hidden
         ${project.color} rounded-[32px] 
         shadow-xl ring-1 ring-black/5 cursor-default
       `}
-        >
-            <div className="p-3">
-                {/* Image Container */}
-                <div className="relative w-full aspect-[4/3] rounded-[24px] overflow-hidden">
-                    <img
-                        src={project.image}
-                        alt={project.title}
-                        className="w-full h-full object-cover"
-                    />
+    >
+      <div className="p-3">
+        {/* Image Container */}
+        <div className="relative w-full aspect-[4/3] rounded-[24px] overflow-hidden">
+          <img
+            src={project.image}
+            alt={project.title}
+            className="w-full h-full object-cover"
+          />
 
-                    {/* Subtle Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none" />
+          {/* Subtle Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none" />
 
-                    {/* Floating Category Badge */}
-                    <div className="absolute top-4 left-4">
-                        <span className="px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-[10px] font-bold text-white uppercase tracking-wider border border-white/20">
-                            {project.category}
-                        </span>
-                    </div>
-                </div>
+          {/* Floating Category Badge */}
+          <div className="absolute top-4 left-4">
+            <span className="px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-[10px] font-bold text-white uppercase tracking-wider border border-white/20">
+              {project.category}
+            </span>
+          </div>
+        </div>
 
-                {/* Content Section */}
-                <div className="mt-2 px-3">
-                    <div className="flex justify-between items-start">
-                        <div>
-                            <h3 className="text-xl font-normal text-gray-900 leading-tight">
-                                {project.title}
-                            </h3>
-                            <p className="text-gray-500 text-sm">
-                                {project.client}
-                            </p>
-                        </div>
-                    </div>
-
-                    {/* Permanent Info Section */}
-                    <div className="pt-2 flex flex-col gap-y-3">
-                        <div className="h-px bg-gray-100" />
-
-                        <div className="">
-                            <h4 className="text-xs font-bold uppercase tracking-widest text-gray-400">Project Overview</h4>
-                            <p className="text-gray-600 text-[15px] leading-relaxed line-clamp-2">
-                                {project.description}
-                            </p>
-                        </div>
-                    </div>
-                </div>
+        {/* Content Section */}
+        <div className="mt-2 px-3">
+          <div className="flex justify-between items-start">
+            <div>
+              <h3 className="text-xl font-normal text-gray-900 leading-tight">
+                {project.title}
+              </h3>
+              <p className="text-gray-500 text-sm">{project.client}</p>
             </div>
-        </motion.div>
-    );
+          </div>
+
+          {/* Permanent Info Section */}
+          <div className="pt-2 flex flex-col gap-y-3">
+            <div className="h-px bg-gray-100" />
+
+            <div className="">
+              <h4 className="text-xs font-bold uppercase tracking-widest text-gray-400">
+                Project Overview
+              </h4>
+              <p className="text-gray-600 text-[15px] leading-relaxed line-clamp-2">
+                {project.description}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
 };
 
 export default function AnimatedCard() {
-    return (
-        <div className='templateContainer'>
-            <div className="p-6 antialiased text-gray-900">
-                <div className="max-w-6xl mx-auto  py-12">
+  return (
+    <div className="templateContainer">
+      <div className="p-0 md:p-6 antialiased text-gray-900">
+        <div className="max-w-6xl mx-auto  py-12">
+          <div className="text-center mb-4">
+            <h2 className="text-4xl md:text-4xl font-bold tracking-tight flex flex-wrap justify-center items-center gap-x-4 gap-y-2">
+              <span className="text-black"> Design Portfolio </span>
+              <motion.span
+                className="px-4 py-1 text-black inline-block"
+                style={{
+                  borderLeft: "3px solid #db6e1a",
+                  background:
+                    "linear-gradient(90deg, rgba(219, 110, 26, 0) 16%, rgba(219, 110, 26, 0.15) 100%)",
+                }}
+              >
+                Selected
+              </motion.span>
+              <span className="text-black"> Works</span>
+            </h2>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="text-lg text-[#1D322D]/70 max-w-2xl mx-auto"
+            >
+              Find the right option and start making the most of our AI-powered
+              platform today!
+            </motion.p>
+          </div>
 
-
-
-                    <div className="text-center mb-4">
-                        <h2 className="text-4xl md:text-4xl font-bold tracking-tight flex flex-wrap justify-center items-center gap-x-4 gap-y-2">
-                            <span className="text-black">  Design Portfolio </span>
-                            <motion.span
-                                className="px-4 py-1 text-black inline-block"
-                                style={{
-                                    borderLeft: '3px solid #db6e1a',
-                                    background: 'linear-gradient(90deg, rgba(219, 110, 26, 0) 16%, rgba(219, 110, 26, 0.15) 100%)',
-                                }}
-                            >
-                                Selected
-                            </motion.span>
-                            <span className="text-black"> Works</span>
-                        </h2>
-                        <motion.p
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.2 }}
-                            className="text-lg text-[#1D322D]/70 max-w-2xl mx-auto"
-                        >
-                            Find the right option and start making the most of our AI-powered platform today!
-                        </motion.p>
-                    </div>
-
-
-                    {/* Card Grid - Adjusted gap for taller cards */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 items-start">
-                        {PROJECTS.map((project, index) => (
-                            <ProjectCard
-                                key={project.id}
-                                project={project}
-                                index={index}
-                            />
-                        ))}
-                    </div>
-                </div>
-            </div>
+          {/* Card Grid - Adjusted gap for taller cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 items-start">
+            {PROJECTS.map((project, index) => (
+              <ProjectCard key={project.id} project={project} index={index} />
+            ))}
+          </div>
         </div>
-    );
+      </div>
+    </div>
+  );
 }

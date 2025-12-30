@@ -1,4 +1,3 @@
-
 import About from "./component/About";
 import About2 from "./component/About2";
 import AnimatedCard from "./component/AnimatedCard";
@@ -20,7 +19,7 @@ export default function Home() {
     <div className="">
       <div>
         <VideoSection />
-        <About />
+        {/* <About /> */}
         <WidgetSection />
         <About2 />
 
@@ -36,7 +35,6 @@ export default function Home() {
         <Cta />
         <Faq />
       </div>
-
     </div>
   );
 }
