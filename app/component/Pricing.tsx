@@ -295,7 +295,7 @@ const PricingSection = () => {
     >
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-4">
-          <h2 className="text-4xl md:text-4xl font-bold tracking-tight flex flex-wrap justify-center items-center gap-x-4 gap-y-2">
+          <h2 className="text-4xl md:text-4xl font-medium tracking-tight flex flex-wrap justify-center items-center gap-x-4 gap-y-2">
             <span className="text-black">Choose the </span>
             <motion.span
               className="px-4 py-1 text-black inline-block"
@@ -448,8 +448,8 @@ const PricingSection = () => {
                               ? "text-white"
                               : "text-white/30"
                             : feature.included
-                            ? "text-zinc-800"
-                            : "text-zinc-400"
+                              ? "text-zinc-800"
+                              : "text-zinc-400"
                         }`}
                       >
                         {feature.text}

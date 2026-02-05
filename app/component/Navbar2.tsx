@@ -1586,13 +1586,9 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500  ${
+      className={`fixed top-0 left-0 right-0 z-100 transition-all duration-500  ${
         isVisible ? "translate-y-0" : "-translate-y-full"
-      } ${
-        isScrolled
-          ? "bg-white shadow-md py-4"
-          : "bg-white py-4 border-transparent"
-      }`}
+      } ${isScrolled ? "bg-white py-4" : "py-4 border-transparent"}`}
     >
       <div className="max-w-7xl mx-auto px-6 md:px-10 flex items-center justify-between">
         {/* Main Logo */}

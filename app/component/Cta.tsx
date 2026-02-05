@@ -1,6 +1,3 @@
-
-
-
 // // app\component\Cta.tsx
 // "use client";
 // import React, { useState, useEffect } from 'react';
@@ -381,7 +378,6 @@
 //             {/* Content Layer */}
 //             <div className="z-20 text-center max-w-4xl mx-auto flex flex-col items-center">
 
-
 //                 <motion.h1
 //                     initial={{ opacity: 0, y: 30 }}
 //                     animate={{ opacity: 1, y: 0 }}
@@ -432,210 +428,225 @@
 // }
 
 "use client";
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import { Star, Sparkles } from 'lucide-react';
+import React, { useState, useEffect } from "react";
+import {
+  motion,
+  AnimatePresence,
+  useMotionValue,
+  useSpring,
+  useTransform,
+} from "framer-motion";
+import { Star, Sparkles } from "lucide-react";
 
 const platforms = [
-    "Notion docs",
-    "Canva slides",
-    "Coda apps",
-    "Google sites",
-    "Framer pages",
-    "Obsidian notes"
+  "Notion docs",
+  "Canva slides",
+  "Coda apps",
+  "Google sites",
+  "Framer pages",
+  "Obsidian notes",
 ];
 
 // 1. Define Props Interface for TypeScript
 interface InteractiveImageProps {
-    src: string;
-    initialRotation: { x: number; y: number; z: number; translateX?: number };
-    animateRotation: { x: number; y: number; z: number; translateX?: number };
-    className?: string;
-    style?: React.CSSProperties;
-    alt: string;
+  src: string;
+  initialRotation: { x: number; y: number; z: number; translateX?: number };
+  animateRotation: { x: number; y: number; z: number; translateX?: number };
+  className?: string;
+  style?: React.CSSProperties;
+  alt: string;
 }
 
 // 2. Applied types to the component
 const InteractiveImage = ({
-    src,
-    initialRotation,
-    animateRotation,
-    className,
-    style,
-    alt
+  src,
+  initialRotation,
+  animateRotation,
+  className,
+  style,
+  alt,
 }: InteractiveImageProps) => {
-    const x = useMotionValue(0);
-    const y = useMotionValue(0);
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
 
-    const mouseX = useSpring(x, { stiffness: 150, damping: 20 });
-    const mouseY = useSpring(y, { stiffness: 150, damping: 20 });
+  const mouseX = useSpring(x, { stiffness: 150, damping: 20 });
+  const mouseY = useSpring(y, { stiffness: 150, damping: 20 });
 
-    const rotateX = useTransform(mouseY, [-0.5, 0.5], [initialRotation.x + 10, initialRotation.x - 10]);
-    const rotateY = useTransform(mouseX, [-0.5, 0.5], [initialRotation.y - 10, initialRotation.y + 10]);
+  const rotateX = useTransform(
+    mouseY,
+    [-0.5, 0.5],
+    [initialRotation.x + 10, initialRotation.x - 10],
+  );
+  const rotateY = useTransform(
+    mouseX,
+    [-0.5, 0.5],
+    [initialRotation.y - 10, initialRotation.y + 10],
+  );
 
-    // Added type for the mouse event
-    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-        const rect = e.currentTarget.getBoundingClientRect();
-        const width = rect.width;
-        const height = rect.height;
-        const mouseXPos = e.clientX - rect.left;
-        const mouseYPos = e.clientY - rect.top;
-        x.set(mouseXPos / width - 0.5);
-        y.set(mouseYPos / height - 0.5);
-    };
+  // Added type for the mouse event
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+    const mouseXPos = e.clientX - rect.left;
+    const mouseYPos = e.clientY - rect.top;
+    x.set(mouseXPos / width - 0.5);
+    y.set(mouseYPos / height - 0.5);
+  };
 
-    const handleMouseLeave = () => {
-        x.set(0);
-        y.set(0);
-    };
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
 
-    return (
+  return (
+    <motion.div
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      initial={{ opacity: 0, ...initialRotation }}
+      animate={{ opacity: 1, ...animateRotation }}
+      style={{
+        rotateX,
+        rotateY,
+        transformStyle: "preserve-3d",
+        perspective: 1000,
+        ...style,
+      }}
+      transition={{ duration: 1.2, ease: [0.23, 1, 0.32, 1] }}
+      className={`absolute hidden lg:block rounded-2xl shadow-[0_30px_60px_rgba(0,0,0,0.12)] border border-white/20 overflow-hidden pointer-events-auto cursor-pointer ${className}`}
+    >
+      <div
+        style={{ transform: "translateZ(60px)" }}
+        className="h-full w-full relative"
+      >
+        <img
+          src={src}
+          alt={alt}
+          className="w-full h-full object-contain"
+          onError={(e) => {
+            // Type assertion for HTMLImageElement
+            (e.target as HTMLImageElement).src =
+              "https://images.unsplash.com/photo-1614332287897-cdc485fa562d?q=80&w=500&auto=format&fit=crop";
+          }}
+        />
+        {/* Gloss Overlay */}
         <motion.div
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
-            initial={{ opacity: 0, ...initialRotation }}
-            animate={{ opacity: 1, ...animateRotation }}
-            style={{
-                rotateX,
-                rotateY,
-                transformStyle: "preserve-3d",
-                perspective: 1000,
-                ...style
-            }}
-            transition={{ duration: 1.2, ease: [0.23, 1, 0.32, 1] }}
-            className={`absolute hidden lg:block rounded-2xl shadow-[0_30px_60px_rgba(0,0,0,0.12)] border border-white/20 overflow-hidden pointer-events-auto cursor-pointer ${className}`}
-        >
-            <div style={{ transform: "translateZ(60px)" }} className="h-full w-full relative">
-                <img
-                    src={src}
-                    alt={alt}
-                    className="w-full h-full object-contain"
-                    onError={(e) => {
-                        // Type assertion for HTMLImageElement
-                        (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1614332287897-cdc485fa562d?q=80&w=500&auto=format&fit=crop';
-                    }}
-                />
-                {/* Gloss Overlay */}
-                <motion.div
-                    className="absolute inset-0 pointer-events-none"
-                    style={{
-                        background: useTransform(
-                            mouseX,
-                            [-0.5, 0.5],
-                            [
-                                "linear-gradient(120deg, rgba(255,255,255,0) 30%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 70%)",
-                                "linear-gradient(120deg, rgba(255,255,255,0) 10%, rgba(255,255,255,0.3) 30%, rgba(255,255,255,0) 50%)"
-                            ]
-                        )
-                    }}
-                />
-            </div>
-        </motion.div>
-    );
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background: useTransform(
+              mouseX,
+              [-0.5, 0.5],
+              [
+                "linear-gradient(120deg, rgba(255,255,255,0) 30%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 70%)",
+                "linear-gradient(120deg, rgba(255,255,255,0) 10%, rgba(255,255,255,0.3) 30%, rgba(255,255,255,0) 50%)",
+              ],
+            ),
+          }}
+        />
+      </div>
+    </motion.div>
+  );
 };
 
 const HeroSection = () => {
-    const [index, setIndex] = useState(0);
+  const [index, setIndex] = useState(0);
 
-    useEffect(() => {
-        const timer = setInterval(() => {
-            setIndex((prev) => (prev + 1) % platforms.length);
-        }, 3000);
-        return () => clearInterval(timer);
-    }, []);
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setIndex((prev) => (prev + 1) % platforms.length);
+    }, 3000);
+    return () => clearInterval(timer);
+  }, []);
 
-    return (
-        <section className="relative flex flex-col items-center justify-center px-4 py-32 overflow-hidden bg-[#fafafa] selection:bg-black selection:text-white">
+  return (
+    <section className="relative flex flex-col items-center justify-center px-4 py-32 overflow-hidden bg-[#fafafa] selection:bg-black selection:text-white">
+      {/* Ambient Background Elements */}
+      <motion.div
+        animate={{ y: [0, -15, 0], opacity: [0.4, 0.8, 0.4] }}
+        transition={{ duration: 4, repeat: Infinity }}
+        className="absolute top-[15%] left-[15%] text-amber-400/60"
+      >
+        <Sparkles size={48} strokeWidth={1} fill="currentColor" />
+      </motion.div>
+      <motion.div
+        animate={{ scale: [1, 1.1, 1], rotate: [0, 10, 0] }}
+        transition={{ duration: 6, repeat: Infinity, delay: 1 }}
+        className="absolute bottom-[20%] right-[15%] text-indigo-400/40"
+      >
+        <Star size={40} strokeWidth={1} fill="currentColor" />
+      </motion.div>
 
-            {/* Ambient Background Elements */}
-            <motion.div
-                animate={{ y: [0, -15, 0], opacity: [0.4, 0.8, 0.4] }}
-                transition={{ duration: 4, repeat: Infinity }}
-                className="absolute top-[15%] left-[15%] text-amber-400/60"
-            >
-                <Sparkles size={48} strokeWidth={1} fill="currentColor" />
-            </motion.div>
-            <motion.div
-                animate={{ scale: [1, 1.1, 1], rotate: [0, 10, 0] }}
-                transition={{ duration: 6, repeat: Infinity, delay: 1 }}
-                className="absolute bottom-[20%] right-[15%] text-indigo-400/40"
-            >
-                <Star size={40} strokeWidth={1} fill="currentColor" />
-            </motion.div>
+      {/* Floating Visuals Layer */}
+      <div className="absolute inset-0 pointer-events-none flex items-center justify-center">
+        <div className="relative w-full max-w-[1400px] h-full">
+          {/* Left Image: Weather/Utility Widget Concept */}
+          <InteractiveImage
+            alt="Weather Widget Preview"
+            src="https://elfsight.com/wp-content/themes/elfsight/frontend/assets/img/component-cta-widgets-left@2x.png"
+            className="left-[4%] top-[25%] w-64 h-80 rotate-[-4deg]"
+            initialRotation={{ x: 0, y: 15, z: -5, translateX: -40 }}
+            animateRotation={{ x: 0, y: -8, z: -4, translateX: 0 }}
+          />
 
-            {/* Floating Visuals Layer */}
-            <div className="absolute inset-0 pointer-events-none flex items-center justify-center">
-                <div className="relative w-full max-w-[1400px] h-full">
+          {/* Right Image: Calendar/Planner Widget Concept */}
+          <InteractiveImage
+            alt="Task Management Preview"
+            src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?q=80&w=600&auto=format&fit=crop"
+            className="right-[4%] bottom-[20%] w-80 h-56 rotate-[3deg]"
+            initialRotation={{ x: 0, y: -15, z: 5, translateX: 40 }}
+            animateRotation={{ x: 0, y: 10, z: 6, translateX: 0 }}
+          />
+        </div>
+      </div>
 
-                    {/* Left Image: Weather/Utility Widget Concept */}
-                    <InteractiveImage
-                        alt="Weather Widget Preview"
-                        src="https://elfsight.com/wp-content/themes/elfsight/frontend/assets/img/component-cta-widgets-left@2x.png"
-                        className="left-[4%] top-[25%] w-64 h-80 rotate-[-4deg]"
-                        initialRotation={{ x: 0, y: 15, z: -5, translateX: -40 }}
-                        animateRotation={{ x: 0, y: -8, z: -4, translateX: 0 }}
-                    />
+      {/* Content Layer */}
+      <div className="z-20 text-center max-w-4xl mx-auto flex flex-col items-center">
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-xl md:text-4xl lg:text-5xl font-medium tracking-tight text-gray-700 leading-[0.95]"
+        >
+          Powerful widgets <br /> to level up your
+        </motion.h1>
 
-                    {/* Right Image: Calendar/Planner Widget Concept */}
-                    <InteractiveImage
-                        alt="Task Management Preview"
-                        src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?q=80&w=600&auto=format&fit=crop"
-                        className="right-[4%] bottom-[20%] w-80 h-56 rotate-[3deg]"
-                        initialRotation={{ x: 0, y: -15, z: 5, translateX: 40 }}
-                        animateRotation={{ x: 0, y: 10, z: 6, translateX: 0 }}
-                    />
-                </div>
-            </div>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          className="mt-6 text-lg md:text-xl text-gray-400 font-medium tracking-tight max-w-xl leading-relaxed"
+        >
+          Embed beautiful, functional blocks into your favorite workspace.{" "}
+          <br />
+          <span className="text-gray-900 font-bold underline decoration-indigo-500/30 underline-offset-4">
+            No coding required.
+          </span>
+        </motion.p>
 
-            {/* Content Layer */}
-            <div className="z-20 text-center max-w-4xl mx-auto flex flex-col items-center">
-                <motion.h1
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="text-xl md:text-4xl lg:text-5xl font-medium tracking-tight text-gray-900 leading-[0.95]"
-                >
-                    Powerful widgets <br /> to level up your
-                </motion.h1>
-
-                <motion.p
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.2 }}
-                    className="mt-6 text-lg md:text-xl text-gray-400 font-medium tracking-tight max-w-xl leading-relaxed"
-                >
-                    Embed beautiful, functional blocks into your favorite workspace. <br />
-                    <span className="text-gray-900 font-bold underline decoration-indigo-500/30 underline-offset-4">
-                        No coding required.
-                    </span>
-                </motion.p>
-
-                <div className="mt-6 flex items-center justify-center">
-                    <motion.div
-                        className="inline-flex items-center cursor-pointer justify-center bg-black text-white px-6 py-3 rounded-[2rem] shadow-2xl"
-                    >
-                        <AnimatePresence mode="wait">
-                            <motion.span
-                                key={platforms[index]}
-                                initial={{ y: 40, opacity: 0, filter: 'blur(8px)' }}
-                                animate={{ y: 0, opacity: 1, filter: 'blur(0px)' }}
-                                exit={{ y: -40, opacity: 0, filter: 'blur(8px)' }}
-                                transition={{ duration: 0.5, ease: [0.19, 1, 0.22, 1] }}
-                                className="text-lg md:text-xl w-fit lg:text-2xl font-normal tracking-tighter whitespace-nowrap"
-                            >
-                                {platforms[index]}
-                            </motion.span>
-                        </AnimatePresence>
-                    </motion.div>
-                </div>
-            </div>
-        </section>
-    );
+        <div className="mt-6 flex items-center justify-center">
+          <motion.div className="inline-flex items-center cursor-pointer justify-center bg-black text-white px-6 py-3 rounded-[2rem] shadow-2xl">
+            <AnimatePresence mode="wait">
+              <motion.span
+                key={platforms[index]}
+                initial={{ y: 40, opacity: 0, filter: "blur(8px)" }}
+                animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
+                exit={{ y: -40, opacity: 0, filter: "blur(8px)" }}
+                transition={{ duration: 0.5, ease: [0.19, 1, 0.22, 1] }}
+                className="text-lg md:text-xl w-fit lg:text-2xl font-normal tracking-tighter whitespace-nowrap"
+              >
+                {platforms[index]}
+              </motion.span>
+            </AnimatePresence>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default function Cta() {
-    return (
-        <div className="">
-            <HeroSection />
-        </div>
-    );
+  return (
+    <div className="">
+      <HeroSection />
+    </div>
+  );
 }

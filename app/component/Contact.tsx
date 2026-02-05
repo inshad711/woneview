@@ -221,7 +221,7 @@ const ContactSection = () => {
 
   // Explicitly type the change event for both input and textarea elements
   const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -237,7 +237,7 @@ const ContactSection = () => {
           {/* Header Section */}
           <div className="flex flex-col items-center text-center">
             <div className="text-center mb-4">
-              <h2 className="text-4xl md:text-4xl font-bold tracking-tight flex flex-wrap justify-center items-center gap-x-4 gap-y-2">
+              <h2 className="text-4xl md:text-4xl font-medium tracking-tight flex flex-wrap justify-center items-center gap-x-4 gap-y-2">
                 <span className="text-black"> Let’s </span>
                 <motion.span
                   className="px-4 py-1 text-black inline-block"
@@ -278,7 +278,7 @@ const ContactSection = () => {
                   className="w-14 h-14 rounded-2xl flex items-center justify-center mb-4"
                   style={{ backgroundColor: "rgb(1, 71, 36)" }}
                 >
-                  <Mail className="w-7 h-7 text-white" />
+                  <Mail className="w-6 h-6 text-white" />
                 </div>
                 <h4
                   className="text-2xl font-bold mb-4"
@@ -315,7 +315,7 @@ const ContactSection = () => {
                   className="w-14 h-14 rounded-2xl flex items-center justify-center mb-4"
                   style={{ backgroundColor: "rgb(1, 71, 36)" }}
                 >
-                  <Phone className="w-7 h-7 text-white" />
+                  <Phone className="w-6 h-6 text-white" />
                 </div>
                 <h4
                   className="text-2xl font-bold mb-4"

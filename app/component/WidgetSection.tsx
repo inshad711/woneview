@@ -511,8 +511,8 @@ const WidgetCard = forwardRef<HTMLDivElement, { widget: Widget }>(
                     widget.badge === "Best Seller"
                       ? "border-orange-200 bg-orange-50 text-orange-600"
                       : widget.badge === "New"
-                      ? "border-green-200 bg-green-50 text-green-600"
-                      : "border-blue-200 bg-blue-50 text-blue-600"
+                        ? "border-green-200 bg-green-50 text-green-600"
+                        : "border-blue-200 bg-blue-50 text-blue-600"
                   }`}
                 >
                   {widget.badge}
@@ -539,7 +539,7 @@ const WidgetCard = forwardRef<HTMLDivElement, { widget: Widget }>(
         </a>
       </motion.div>
     );
-  }
+  },
 );
 
 WidgetCard.displayName = "WidgetCard";
@@ -580,7 +580,7 @@ export default function WidgetSection() {
 
       <div className="max-w-7xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
         <div className="text-center mb-4">
-          <h2 className="text-4xl md:text-4xl font-bold tracking-tight flex flex-wrap justify-center items-center gap-x-4 gap-y-2">
+          <h2 className="text-4xl md:text-4xl font-medium tracking-tight flex flex-wrap justify-center items-center gap-x-4 gap-y-2">
             <span className="text-black"> 97 </span>
             <motion.span
               className="px-4 py-1 text-black inline-block"
@@ -706,17 +706,17 @@ export default function WidgetSection() {
 
               {filteredWidgets.length > 0 && (
                 <motion.div layout className="col-span-full mt-4">
-                  <div className="bg-magenta rounded-3xl p-8 md:p-12 text-center text-white space-y-6 overflow-hidden relative group">
-                    <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -mr-32 -mt-32 transition-transform duration-700 group-hover:scale-150" />
-                    <div className="absolute bottom-0 left-0 w-48 h-48 bg-black/10 rounded-full blur-2xl -ml-24 -mb-24 transition-transform duration-700 group-hover:scale-150" />
+                  <div className="bg-[#c05f42] rounded-3xl p-8 md:p-12 text-center text-white space-y-6 overflow-hidden relative group">
+                    <div className="absolute top-0 right-0 w-64 h-64 bg-[#c05f42] rounded-full blur-3xl -mr-32 -mt-32 transition-transform duration-700 group-hover:scale-150" />
+                    <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#c05f42] rounded-full blur-2xl -ml-24 -mb-24 transition-transform duration-700 group-hover:scale-150" />
 
-                    <h3 className="text-2xl md:text-3xl font-extrabold relative z-10">
+                    <h3 className="text-2xl md:text-3xl font-medium relative z-10">
                       Take Your Website Further With the Perfect Widget
                     </h3>
                     <div className="relative z-10">
                       <a
                         href="#"
-                        className="inline-block bg-white text-magenta font-bold px-8 py-4 rounded-full shadow-lg hover:bg-gray-50 transition-all duration-300 hover:scale-105 active:scale-95"
+                        className="inline-block bg-white text-[#c05f42] font-bold px-8 py-4 rounded-full shadow-lg hover:bg-gray-50 transition-all duration-300 hover:scale-105 active:scale-95"
                       >
                         Explore All 97 Widgets
                       </a>

@@ -477,7 +477,7 @@ export default function AnimatedCard() {
       <div className="p-0 md:p-6 antialiased text-gray-900">
         <div className="max-w-6xl mx-auto  py-12">
           <div className="text-center mb-4">
-            <h2 className="text-4xl md:text-4xl font-bold tracking-tight flex flex-wrap justify-center items-center gap-x-4 gap-y-2">
+            <h2 className="text-4xl md:text-4xl font-medium tracking-tight flex flex-wrap justify-center items-center gap-x-4 gap-y-2">
               <span className="text-black"> Design Portfolio </span>
               <motion.span
                 className="px-4 py-1 text-black inline-block"

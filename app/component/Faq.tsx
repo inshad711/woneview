@@ -213,7 +213,7 @@ const AccordionItem: React.FC<AccordionItemProps> = ({
         onClick={onClick}
         className="w-full flex cursor-pointer items-center justify-between p-2 md:p-3 text-left focus:outline-none group"
       >
-        <span className="text-lg md:text-xl font-normal text-black/80 tracking-wide group-hover:text-black transition-colors">
+        <span className="text-lg md:text-[18px] font-normal text-black/80 tracking-wide group-hover:text-black transition-colors">
           {question}
         </span>
         <div className="relative flex items-center justify-center w-8 h-8 rounded-full bg-black/5 group-hover:bg-black/10 transition-colors">
@@ -263,7 +263,7 @@ export default function Faq() {
         >
           {/* Heading Section */}
           <div className="text-center mb-4">
-            <h2 className="text-4xl md:text-4xl font-bold tracking-tight flex flex-wrap justify-center items-center gap-x-4 gap-y-2">
+            <h2 className="text-4xl md:text-4xl font-medium tracking-tight flex flex-wrap justify-center items-center gap-x-4 gap-y-2">
               <span className="text-black">Frequently</span>
               <motion.span
                 className="px-4 py-1 text-black inline-block"

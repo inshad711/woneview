@@ -1,28 +1,39 @@
 @import "tailwindcss";
 
+/* Agar aapke paas tailwindcss-animate plugin nahi hai to 
+  neeche wali line hata dein, warna error aayega.
+*/
+/* @plugin "tailwindcss-animate"; */
+
 :root {
   --background: #ffffff;
+  --foreground: #171717;
 }
 
-@theme inline {
-  /* --color-background: var(--background); */
+/* IMPORTANT: @theme block ke andar hum Tailwind ke variables override karte hain.
+   'inline' keyword nahi use karna hai CSS file mein.
+*/
+@theme {
+  /* Default Sans Font (Bricolage) */
+  --font-sans: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
 
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Custom Font (Montserrat) */
+  --font-montserrat:
+    var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
 }
-
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-  }
-} */
 
 body {
-  /* background: var(--background); */
+  background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+
+  /* FORCE APPLY: 
+     Yahan hum browser ko zabardasti bol rahe hain ki Bricolage use kare.
+     Agar Tailwind fail bhi hua, tab bhi ye line font badal degi.
+  */
+  font-family: var(--font-bricolage), sans-serif;
 }
 
+/* Custom Utilities */
 .templateContainer {
-  @apply max-w-[1400px] mx-auto px-4  md:px-12 lg:px-20;
+  @apply max-w-[1400px] mx-auto px-4 md:px-12 lg:px-20;
 }

@@ -132,9 +132,12 @@
 
 // export default Footer2;
 
+///////////// working /////////
+
 "use client";
 import React from "react";
 import { Phone, Mail, Facebook, Instagram, Linkedin } from "lucide-react";
+import Image from "next/image";
 
 /**
  * Enhanced Footer Component for Woneview PVT LTD
@@ -145,10 +148,40 @@ const Footer2 = () => {
     <footer className="bg-[#151619] text-white pt-20 md:pt-32 pb-12 px-8 md:px-16 border relative overflow-hidden m-2 rounded-[20px]">
       {/* Background Decorative Text - "Woneview" Watermark */}
       <div className="absolute inset-0 opacity-10 pointer-events-none select-none">
-        <div className="text-[12vw] text-center mt-3 md:-mt-2 font-semibold uppercase tracking-tight whitespace-nowrap overflow-hidden">
+        <div className="text-[8vw] text-center mt-3 md:-mt-2 font-semibold uppercase tracking-tight whitespace-nowrap overflow-hidden">
           Woneview
         </div>
       </div>
+      {/* <div className="absolute inset-0 opacity-10 pointer-events-none select-none flex items-center justify-center">
+        <Image
+          src="/wonview-01.png"
+          alt="Woneview"
+          width={1200}
+          height={600}
+          className="w-[80vw] object-contain invert-0 brightness-0 h-auto"
+        />
+      </div> */}
+      {/* <div className="absolute inset-0 opacity-10 pointer-events-none select-none flex items-center justify-center">
+        <img
+          src="/wonview-01.png"
+          alt="Woneview"
+          className="w-[80vw] max-w-none object-contain invert brightness-0"
+        />
+      </div> */}
+      {/* <div className="absolute inset-0 opacity-10 pointer-events-none select-none flex items-center justify-center">
+        <img
+          src="/wonview-01.png"
+          alt="Woneview"
+          className="w-[80vw] max-w-none object-contain  invert brightness-0"
+        />
+      </div> */}
+      {/* <div className="absolute inset-0 opacity-60 pointer-events-none select-none flex items-start justify-center">
+        <img
+          src="/wonview-01.png"
+          alt="Woneview"
+          className="h-[14vh] max-w-none object-contain invert brightness-0 mt-6"
+        />
+      </div> */}
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-12">

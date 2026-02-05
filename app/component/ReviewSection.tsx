@@ -607,7 +607,7 @@ export default function ReviewSection() {
     <div className="w-full bg-white">
       <section className="pt-20 px-4 md:px-8 max-w-[1440px] mx-auto overflow-hidden">
         <div className="text-center mb-4">
-          <h2 className="text-4xl md:text-4xl font-bold tracking-tight flex flex-wrap justify-center items-center gap-x-4 gap-y-2">
+          <h2 className="text-4xl md:text-4xl font-medium tracking-tight flex flex-wrap justify-center items-center gap-x-4 gap-y-2">
             <span className="text-black"> Loved by </span>
             <motion.span
               className="px-4 py-1 text-black inline-block"

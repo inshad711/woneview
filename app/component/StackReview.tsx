@@ -400,7 +400,7 @@ export default function StackReview() {
       <div className="bg-[#FDFDFD] text-[#171717] selection:bg-orange-100 ">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-4">
-            <h2 className="text-4xl md:text-4xl font-bold tracking-tight flex flex-wrap justify-center items-center gap-x-4 gap-y-2">
+            <h2 className="text-4xl md:text-4xl font-medium tracking-tight flex flex-wrap justify-center items-center gap-x-4 gap-y-2">
               <span className="text-black"> Design Portfolio </span>
               <motion.span
                 className="px-4 py-1 text-black inline-block"

@@ -830,6 +830,15 @@ export default function VideoSection() {
 
   return (
     <div className="relative bg-white" ref={containerRef}>
+      <div
+        className="absolute top-[-10%] left-[25%] w-[80vw] h-[80vw] max-w-[800px] max-h-[800px] rounded-full pointer-events-none opacity-[0.15]"
+        style={{
+          background: "radial-gradient(circle, #EC4909 0%, transparent 70%)",
+          transform: "rotate(-38deg)",
+          filter: "blur(100px)",
+          zIndex: 1,
+        }}
+      />
       <div className="relative h-[180vh] w-full">
         <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-center overflow-hidden">
           {/* HEADER SECTION - Increased Z-index to stay above background assets */}
@@ -840,12 +849,12 @@ export default function VideoSection() {
             }}
             className="z-40 text-center px-6 will-change-transform max-w-4xl mx-auto relative"
           >
-            <h1 className="font-medium tracking-tight mb-6 text-black leading-[1.1]">
-              <span className="text-[#f15b2b] text-lg md:text-2xl font-light">
+            <h1 className="font-medium tracking-tight mb-6 text-black ">
+              <span className="text-[#f15b2b]  text-lg md:text-2xl font-light">
                 website widgets platform
               </span>
               <br />
-              <span className="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-bold block mt-3">
+              <span className="text-3xl sm:text-4xl  md:text-5xl lg:text-[47px] leading-[1.1] font-normal block mt-3">
                 Upgrade Your Website <br className="hidden sm:block" /> Without
                 Coding
               </span>

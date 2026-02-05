@@ -25,7 +25,7 @@ const ComparisonSection = () => {
     <section className="py-20 px-0 md:px-6 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto flex flex-col items-center">
         <div className="text-center mb-4">
-          <h2 className="text-4xl md:text-4xl font-bold tracking-tight flex flex-wrap justify-center items-center gap-x-4 gap-y-2">
+          <h2 className="text-4xl md:text-4xl font-medium tracking-tight flex flex-wrap justify-center items-center gap-x-4 gap-y-2">
             <span className="text-black"> Why </span>
             <motion.span
               className="px-4 py-1 text-black inline-block"
